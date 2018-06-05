@@ -32,19 +32,24 @@ module.exports = function(app) {
             userScores.push(scoresDiff);
         }
 
-        //find best match
-        for(var i = 0; i < userScores; i++){
-            if(userScores[i] <= userScores[match]){
-                match = i
-            }
-        }
+        var minVal = Math.min.apply(null, userScores);
+        var indexMin = userScores.indexOf(minVal);
 
-        //get bestMatch data
-        var bestFriend = friends[match];
-        res.json(bestFriend);
+        var MatchingFriend = friends[indexMin];
+        // //find best match
+        // for(var i = 0; i < userScores; i++){
+        //     if(userScores[i] <= userScores[match]){
+        //         match = i
+        //     }
+        // }
+
+        // //get bestMatch data
+        // var bestFriend = friends[match];
+        // res.json(bestFriend);
 
         //push new data into friends array
-        friends.push(res.body);
+        // friends.push(res.body);
+        res.json(MatchingFriend);
     });
 
 }
