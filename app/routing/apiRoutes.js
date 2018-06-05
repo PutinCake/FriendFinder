@@ -16,8 +16,12 @@ module.exports = function(app) {
         //var the user input object
         var userInput = req.body;
         console.log('userInput = ' + JSON.stringify(userInput));
+
         var newFriendScores = req.body.scores;
-        var userScores = []
+        var newUserName = req.body.name;
+        var newPhoto = req.body.photo;
+
+        var userScores = [];
         //set match data
         var firendsCount = 0;
         var match = 0;
@@ -36,20 +40,17 @@ module.exports = function(app) {
         var indexMin = userScores.indexOf(minVal);
 
         var MatchingFriend = friends[indexMin];
-        // //find best match
-        // for(var i = 0; i < userScores; i++){
-        //     if(userScores[i] <= userScores[match]){
-        //         match = i
-        //     }
-        // }
-
-        // //get bestMatch data
-        // var bestFriend = friends[match];
-        // res.json(bestFriend);
-
-        //push new data into friends array
-        friends.push(res.body);
+       
         res.json(MatchingFriend);
+
+        
+        var newUserData = {
+            "name": newUserName,
+            "photo": newPhoto,
+            "scores": newFriendScores
+        };
+        
+        friends.push(newUserData);
     });
 
 }
