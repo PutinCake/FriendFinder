@@ -15,7 +15,8 @@ module.exports = function(app) {
     app.post('/api/friends', function(req, res){
         //var the user input object
         var userInput = req.body;
-        console.log('userInput = ' + JSON.stringify(userInput));
+        console.log(req.body)
+        // console.log('userInput = ' + JSON.stringify(userInput));
 
         var newFriendScores = req.body.scores;
         var newUserName = req.body.name;
