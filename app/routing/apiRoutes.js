@@ -25,7 +25,7 @@ module.exports = function(app) {
         for(var i = 0; i < friends.length; i++){
             var scoresDiff = 0
             //run friends in list
-            for(var j = 0; j < newFriendScores; j++){
+            for(var j = 0; j < friends[i].scores.length; j++){
                 scoresDiff += Math.abs(parseInt(friends[i].scores[j]) - parseInt(newFriendScores[j]));
             }
             //push results into userScores
@@ -48,7 +48,7 @@ module.exports = function(app) {
         // res.json(bestFriend);
 
         //push new data into friends array
-        // friends.push(res.body);
+        friends.push(res.body);
         res.json(MatchingFriend);
     });
 
